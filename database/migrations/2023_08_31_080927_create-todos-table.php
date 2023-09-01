@@ -13,7 +13,15 @@ class CreateTodosTable extends Migration
      */
     public function up()
     {
-        //
+        //creation of columns
+        Schema::create ('todos',function(Blueprint $table){
+            $table->increments('id');
+            $table->string('name');
+            $table->text('description')->nullable();
+            $table->boolean('completed')->default(false);
+            $table->timestamps();
+        });
+        }
     }
 
     /**
@@ -24,5 +32,6 @@ class CreateTodosTable extends Migration
     public function down()
     {
         //
+        Schema::dropIfExists('tasks');
     }
-}
+
